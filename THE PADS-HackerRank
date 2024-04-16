@@ -1,0 +1,10 @@
+THE PADS-HackerRank
+
+
+Select  concat(Name, '(' , left(Occupation,1),  ')' )  from  OCCUPATIONS
+Order by Name; 
+
+Select  concat  ( 'There are a total of   ', count(*) ,'  ', lower(Occupation) ,'s. '  )
+from  OCCUPATIONS
+Group by  Occupation
+ORDER BY count( Occupation ),Occupation;  
