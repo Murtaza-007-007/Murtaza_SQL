@@ -1,0 +1,13 @@
+With CTE1 as
+(Select hacker_id, count(challenge_id) as challenges, count(1) over( partition by count(challenge_id)) as new_flag,
+rank() over(order by count(challenge_id)desc) as new_rank
+from Challenges 
+Group by hacker_id)
+
+
+select A.hacker_id,B.Name,A.challenges
+from CTE1 A
+join hackers B
+on A.hacker_id= B.hacker_id
+where new_flag =1  or new_rank=1
+Order by A.challenges DESC, A.hacker_id Asc;
