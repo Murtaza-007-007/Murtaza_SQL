@@ -1,0 +1,6 @@
+/*
+Enter your query here.
+*/
+
+select CITY,length(CITY) from Station order by length(CITY) DESC,CITY ASC  LIMIT 1;
+select CITY, length(CITY) from Station order by length(CITY) ASC, CITY ASC  LIMIT 1;
