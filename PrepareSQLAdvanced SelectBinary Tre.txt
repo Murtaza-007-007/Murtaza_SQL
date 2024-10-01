@@ -1,0 +1,51 @@
+Prepare SQLAdvanced SelectBinary Tree Nodes
+
+PROBLEM
+
+You are given a table, BST, containing two columns: N and P, where N represents the value of a node in Binary Tree, and P is the parent of N.
+
+
+
+COLUMN    TYPE
+
+N          INT
+P          INT
+
+Write a query to find the node type of Binary Tree ordered by the value of the node. Output one of the following for each node:
+
+Root: If node is root node.
+Leaf: If node is leaf node.
+Inner: If node is neither root nor leaf node.
+
+
+SAMPLE INPUT
+
+N     P
+1     2
+3     2
+6     8
+9     8
+
+5     NULL
+
+
+
+SOLUTION
+
+
+
+
+SELECT A.N, 
+CASE 
+  WHEN A.P IS NOT NULL THEN 
+  CASE
+   WHEN (select count(*) from bst where P=A.N)=0
+   then 'Leaf'
+   Else
+   'Inner'
+   end
+ ELSE 
+    'Root'
+END
+from BST A
+ORDER BY A.N;
