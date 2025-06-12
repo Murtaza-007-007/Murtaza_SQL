@@ -1,0 +1,21 @@
+
+
+
+
+
+
+WITH miscalculated_avg AS (
+    SELECT 
+        AVG(CAST(REPLACE(CAST(salary AS VARCHAR), '0', '') AS INT)) AS incorrected_salary
+    FROM EMPLOYEES
+),
+correct_avg AS (
+    SELECT 
+        AVG(CAST(salary AS FLOAT)) AS actual_salary
+    FROM EMPLOYEES
+)
+SELECT 
+    cast(CEILING(actual_salary - incorrected_salary) as INT) AS amount_of_error
+FROM 
+    miscalculated_avg,
+    correct_avg;
